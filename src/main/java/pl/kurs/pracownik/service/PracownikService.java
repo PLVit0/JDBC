@@ -59,8 +59,8 @@ public class PracownikService {
 
     public void podwyzka(Pracownik pracownik, double kwota){
 
-        String selectQuery = "SELECT pensja FROM pracownik WHERE imie = ?";
-        String updateQuery = "UPDATE pracownik SET pensja = ? WHERE imie = ?";
+        String selectQuery = "select pensja from pracownik where imie = ?";
+        String updateQuery = "update pracownik set pensja = ? where imie = ?";
 
         try (Connection connection = connectionService.getConnection();
              PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
@@ -83,9 +83,10 @@ public class PracownikService {
             throw new RuntimeException(e);
         }
     }
-    //        - wyszukującą pracownika po imieniu i nazwisku (jeżeli podamy samo imię lub samo nazwisko to ten SELECT też ma działać w tej metodzie).
+
+
     public void znajdzPracownika(String imieLubNazwisko){
-        String selectQuery = "SELECT * FROM pracownicy.Pracownik WHERE imie = ? OR nazwisko = ?";
+        String selectQuery = "select * from pracownicy.Pracownik where imie = ? or nazwisko = ?";
 
         try (Connection connection = connectionService.getConnection();
              PreparedStatement statement = connection.prepareStatement(selectQuery)) {
@@ -117,7 +118,7 @@ public class PracownikService {
 
 
     public void awans(Pracownik pracownik, Stanowisko stanowisko){
-        String updateQuery = "UPDATE pracownik SET stanowisko = ? WHERE imie = ?";
+        String updateQuery = "update pracownik set stanowisko = ? where imie = ?";
 
         try(Connection connection = connectionService.getConnection();
             PreparedStatement statement = connection.prepareStatement(updateQuery)){
