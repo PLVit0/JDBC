@@ -11,13 +11,13 @@ public class Main {
 
 
         ConnectionService connectionService = new ConnectionService();
-        connectionService.createPracownikTable();
+//        connectionService.createPracownikTable();
 
         PracownikService pracownikService = new PracownikService();
 
         Pracownik pracownik = new Pracownik("Janusz", "Nowak", Stanowisko.JUNIOR_DEV, 9000, true);
-        Pracownik pracownik1 = new Pracownik("Sebastian", "Kowalski", Stanowisko.STAŻYSTA, 5000, false);
-        Pracownik pracownik2 = new Pracownik("Robert", "Nowak", Stanowisko.STAŻYSTA, 5000, true);
+        Pracownik pracownik1 = new Pracownik("Sebastian", "Kowalski", Stanowisko.STAZYSTA, 5000, false);
+        Pracownik pracownik2 = new Pracownik("Robert", "Nowak", Stanowisko.STAZYSTA, 5000, true);
 
 //        pracownikService.zatrudnieniePracownika(pracownik);
 //        pracownikService.zatrudnieniePracownika(pracownik1);
@@ -32,13 +32,13 @@ public class Main {
 //
 //        pracownikService.podwyzka(pracownik, 9000);
 
-
+//        pracownikService.zwolnieniePracownika(pracownik1);
 
 //        pracownikService.ponowneZatrudnieniePracownika(pracownik1);
 
         pracownikService.znajdzPracownika("Kowalski");
-
-        pracownikService.zwolnieniePracownika(pracownik2);
+//
+//        pracownikService.zwolnieniePracownika(pracownik2);
 
     }
 

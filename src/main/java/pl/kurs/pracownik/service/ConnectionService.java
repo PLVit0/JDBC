@@ -19,7 +19,7 @@ public class ConnectionService {
         dataSource = new BasicDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/pracownicy");
         dataSource.setUsername("root");
-        dataSource.setPassword("rootroot");
+        dataSource.setPassword("root");
     }
 
     public Connection getConnection() throws SQLException {
