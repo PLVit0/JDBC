@@ -13,7 +13,6 @@ public class PracownikService {
     ConnectionService connectionService = new ConnectionService();
 
 
-
     public void zatrudnieniePracownika(Pracownik pracownik) {
         String insertQuery = "insert into pracownik (imie, nazwisko, stanowisko, pensja, pracuje) values (?, ?, ?, ?, ?)";
 
@@ -31,11 +30,11 @@ public class PracownikService {
         }
     }
 
-    public void zwolnieniePracownika(Pracownik pracownik){
+    public void zwolnieniePracownika(Pracownik pracownik) {
         String updateQuery = "update pracownik set pracuje = 0 where imie = ? and nazwisko = ?";
 
-        try(Connection connection = connectionService.getConnection();
-            PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+        try (Connection connection = connectionService.getConnection();
+             PreparedStatement statement = connection.prepareStatement(updateQuery)) {
             statement.setString(1, pracownik.getImie());
             statement.setString(2, pracownik.getNazwisko());
             statement.executeUpdate();
@@ -44,11 +43,11 @@ public class PracownikService {
         }
     }
 
-    public void ponowneZatrudnieniePracownika(Pracownik pracownik){
+    public void ponowneZatrudnieniePracownika(Pracownik pracownik) {
         String updateQuery = "update pracownik set pracuje = 1 where imie = ? and nazwisko = ?";
 
-        try(Connection connection = connectionService.getConnection();
-            PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+        try (Connection connection = connectionService.getConnection();
+             PreparedStatement statement = connection.prepareStatement(updateQuery)) {
             statement.setString(1, pracownik.getImie());
             statement.setString(2, pracownik.getNazwisko());
             statement.executeUpdate();
@@ -57,7 +56,7 @@ public class PracownikService {
         }
     }
 
-    public void podwyzka(Pracownik pracownik, double kwota){
+    public void podwyzka(Pracownik pracownik, double kwota) {
 
         String selectQuery = "select pensja from pracownik where imie = ?";
         String updateQuery = "update pracownik set pensja = ? where imie = ?";
@@ -85,7 +84,7 @@ public class PracownikService {
     }
 
 
-    public void znajdzPracownika(String imieLubNazwisko){
+    public void znajdzPracownika(String imieLubNazwisko) {
         String selectQuery = "select * from pracownicy.Pracownik where imie = ? or nazwisko = ?";
 
         try (Connection connection = connectionService.getConnection();
@@ -117,11 +116,11 @@ public class PracownikService {
     }
 
 
-    public void awans(Pracownik pracownik, Stanowisko stanowisko){
+    public void awans(Pracownik pracownik, Stanowisko stanowisko) {
         String updateQuery = "update pracownik set stanowisko = ? where imie = ?";
 
-        try(Connection connection = connectionService.getConnection();
-            PreparedStatement statement = connection.prepareStatement(updateQuery)){
+        try (Connection connection = connectionService.getConnection();
+             PreparedStatement statement = connection.prepareStatement(updateQuery)) {
             statement.setString(1, stanowisko.name());
             statement.setString(2, pracownik.getImie());
 
@@ -130,13 +129,6 @@ public class PracownikService {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
-
-
 
 
 }
